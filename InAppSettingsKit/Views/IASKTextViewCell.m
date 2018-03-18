@@ -30,6 +30,11 @@
 		textView.scrollEnabled = NO;
 		textView.font = [UIFont systemFontOfSize:17.0];
 		textView.backgroundColor = [UIColor whiteColor];
+        
+        if ([textView respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            textView.adjustsFontForContentSizeCategory = NO;
+        }
+        
 		[self.contentView addSubview:textView];
 
 		self.textView = textView;

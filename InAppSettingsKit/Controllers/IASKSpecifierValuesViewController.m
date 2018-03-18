@@ -96,6 +96,10 @@
 	
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellValue];
+        
+        if ([cell.textLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            cell.textLabel.adjustsFontForContentSizeCategory = NO;
+        }
     }
 
     [_selection updateSelectionInCell:cell indexPath:indexPath];
