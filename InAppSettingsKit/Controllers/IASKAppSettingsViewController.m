@@ -597,7 +597,7 @@ CGRect IASKCGRectSwap(CGRect rect);
 		cell.userInteractionEnabled = NO;
         
         if ([cell.detailTextLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
-            cell.detailTextLabel.textView.adjustsFontForContentSizeCategory = NO;
+            cell.detailTextLabel.adjustsFontForContentSizeCategory = NO;
         }
         
 	}
