@@ -432,12 +432,12 @@ CGRect IASKCGRectSwap(CGRect rect);
 	}
 	IASK_IF_IOS7_OR_GREATER
 	(
-	 NSDictionary *rowHeights = @{UIContentSizeCategoryExtraSmall: @(44),
+	 /*NSDictionary *rowHeights = @{UIContentSizeCategoryExtraSmall: @(44),
 								  UIContentSizeCategorySmall: @(44),
 								  UIContentSizeCategoryMedium: @(44),
 								  UIContentSizeCategoryLarge: @(44),
-								  UIContentSizeCategoryExtraLarge: @(47)};
-	 CGFloat rowHeight = (CGFloat)[rowHeights[UIApplication.sharedApplication.preferredContentSizeCategory] doubleValue];
+								  UIContentSizeCategoryExtraLarge: @(47)};*/
+     CGFloat rowHeight = 44.0f;
 	 return rowHeight != 0 ? rowHeight : 51;
 	);
 	return 44;
@@ -573,6 +573,14 @@ CGRect IASKCGRectSwap(CGRect rect);
 		cell.textLabel.text = specifier.title;
 		[self setMultiValuesFromDelegateIfNeeded:specifier];
 		cell.detailTextLabel.text = [[specifier titleForCurrentValue:[self.settingsStore objectForKey:specifier.key] ?: specifier.defaultValue] description];
+        
+        if ([cell.textLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            cell.textLabel.adjustsFontForContentSizeCategory = NO;
+        }
+        
+        if ([cell.detailTextLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            cell.detailTextLabel.adjustsFontForContentSizeCategory = NO;
+        }
 	}
 	else if ([specifier.type isEqualToString:kIASKPSTitleValueSpecifier]) {
 		cell.textLabel.text = specifier.title;
@@ -587,6 +595,11 @@ CGRect IASKCGRectSwap(CGRect rect);
 		
 		cell.detailTextLabel.text = stringValue;
 		cell.userInteractionEnabled = NO;
+        
+        if ([cell.detailTextLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            cell.detailTextLabel.textView.adjustsFontForContentSizeCategory = NO;
+        }
+        
 	}
 	else if ([specifier.type isEqualToString:kIASKPSTextFieldSpecifier]) {
 		cell.textLabel.text = specifier.title;
@@ -609,7 +622,12 @@ CGRect IASKCGRectSwap(CGRect rect);
 		}
 		textField.textAlignment = specifier.textAlignment;
 		textField.placeholder = specifier.placeholder;
-		textField.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
+		textField.adjustsFontSizeToFitWidth = NO;
+        
+        if ([textField respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            textField.adjustsFontForContentSizeCategory = NO;
+        }
+        
 	}
 	else if ([specifier.type isEqualToString:kIASKTextViewSpecifier]) {
 		IASKTextViewCell *textCell = (id)cell;
@@ -621,6 +639,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 		textCell.textView.autocapitalizationType = specifier.autocapitalizationType;
 		textCell.textView.autocorrectionType = specifier.autoCorrectionType;
 		textCell.textView.placeholder = specifier.placeholder;
+        
+        if ([textCell.textView respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+            textCell.textView.adjustsFontForContentSizeCategory = NO;
+        }
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self cacheRowHeightForTextView:textCell.textView];
@@ -679,8 +701,8 @@ CGRect IASKCGRectSwap(CGRect rect);
 		cell.textLabel.textAlignment = specifier.textAlignment;
 	}
 	cell.detailTextLabel.textAlignment = specifier.textAlignment;
-	cell.textLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
-	cell.detailTextLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
+	cell.textLabel.adjustsFontSizeToFitWidth = NO;
+	cell.detailTextLabel.adjustsFontSizeToFitWidth = NO;
     return cell;
 }
 
