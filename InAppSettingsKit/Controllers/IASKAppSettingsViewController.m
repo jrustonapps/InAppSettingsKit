@@ -681,6 +681,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 	cell.detailTextLabel.textAlignment = specifier.textAlignment;
 	cell.textLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
 	cell.detailTextLabel.adjustsFontSizeToFitWidth = specifier.adjustsFontSizeToFitWidth;
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:17];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:17];
+
     return cell;
 }
 
