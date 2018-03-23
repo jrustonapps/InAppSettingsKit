@@ -708,8 +708,13 @@ CGRect IASKCGRectSwap(CGRect rect);
 	cell.textLabel.adjustsFontSizeToFitWidth = NO;
 	cell.detailTextLabel.adjustsFontSizeToFitWidth = NO;
     
-    cell.textLabel.font = [UIFont systemFontOfSize:17];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:17];
+    if (cell.textLabel.font.pointSize > 18) {
+        cell.textLabel.font = [UIFont fontWithName:cell.textLabel.font.fontName size:17];
+    }
+    
+    if (cell.detailTextLabel.font.pointSize > 18) {
+        cell.detailTextLabel.font = [UIFont fontWithName:cell.detailTextLabel.font.fontName size:17];
+    }
     
     return cell;
 }
