@@ -531,6 +531,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 	}
+    
+    cell.textLabel.adjustsFontForContentSizeCategory = NO;
+    cell.detailTextLabel.adjustsFontForContentSizeCategory = NO;
+    
 	/*IASK_IF_PRE_IOS6(cell.textLabel.minimumFontSize = kIASKMinimumFontSize;
 					 cell.detailTextLabel.minimumFontSize = kIASKMinimumFontSize;);
 	IASK_IF_IOS6_OR_GREATER(cell.textLabel.minimumScaleFactor = kIASKMinimumFontSize / cell.textLabel.font.pointSize;
@@ -703,6 +707,10 @@ CGRect IASKCGRectSwap(CGRect rect);
 	cell.detailTextLabel.textAlignment = specifier.textAlignment;
 	cell.textLabel.adjustsFontSizeToFitWidth = NO;
 	cell.detailTextLabel.adjustsFontSizeToFitWidth = NO;
+    
+    cell.textLabel.font = [UIFont systemFontOfSize:17];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:17];
+    
     return cell;
 }
 

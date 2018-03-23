@@ -302,6 +302,7 @@
 				TargetAttributes = {
 					5797A3BD1D2F6E6D00B13CB2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = T5MCD56Q79;
 					};
 					5797A3D61D2F6E6D00B13CB2 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -570,6 +571,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T5MCD56Q79;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					USES_IASK_STATIC_LIBRARY,
@@ -586,6 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T5MCD56Q79;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					USES_IASK_STATIC_LIBRARY,
