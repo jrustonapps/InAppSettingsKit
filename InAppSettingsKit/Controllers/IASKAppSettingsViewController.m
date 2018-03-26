@@ -532,8 +532,13 @@ CGRect IASKCGRectSwap(CGRect rect);
 		}
 	}
     
-    cell.textLabel.adjustsFontForContentSizeCategory = NO;
-    cell.detailTextLabel.adjustsFontForContentSizeCategory = NO;
+    if ([cell.textLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+        cell.textLabel.adjustsFontForContentSizeCategory = NO;
+    }
+    
+    if ([cell.detailTextLabel respondsToSelector:@selector(adjustsFontForContentSizeCategory)]) {
+        cell.detailTextLabel.adjustsFontForContentSizeCategory = NO;
+    }
     
 	/*IASK_IF_PRE_IOS6(cell.textLabel.minimumFontSize = kIASKMinimumFontSize;
 					 cell.detailTextLabel.minimumFontSize = kIASKMinimumFontSize;);
